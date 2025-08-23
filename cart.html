@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cart</title>
     <link rel="stylesheet" href="style.css">
-   
 </head>
 <body>
-        <header class="head">
-            <div class="logo">
-            <h2><span>ROSE</span><span>PETALS</span></h2>
+    <header class="head">
+        <div class="logo">
+            <h2><span>ROSE</span> <span>PETALS</span></h2>
         </div>
         <div class="nav">
             <nav>
@@ -25,140 +24,35 @@
             </nav>
         </div>
     </header>
-    <div class="heading"><h1>Shopping Cart</h1></div>
-    <div class="table-layout">
-    <table>
-        <thead>
-         <tr>
-             <th>Products</th>
-             <th>Price</th>
-             <th>Quantity</th>
-             <th>Total</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Product 1 -->
-             <tr>
-                  <td class="product-img"><img src="/ASSETS/download.jpeg" alt="Rose" class="exlore-img" width="100px" height="100px">Rose Bouquet</td>
-                  <td>$95 - $100</td>
-                  <td class="quantity"><span class="qty decrease" id="decrease" >-</span><span class="count" id="count"></span><span class="qty increase" id="increase">+</span></td>
-                  <td>$95 - $100</td>
-                </tr>
-                 <!-- Product 2 -->
-                <tr>
-                  <td class="product-img"><img src="/ASSETS/images (8).jpeg" alt="Rose" class="exlore-img" width="100px" height="100px">Flower Centerpieces</td>
-                  <td>$60 - $100</td>
-                  <td class="quantity"><span class="qty" id="decrease2">-</span><span class="count" id="count2"></span><span class="qty" id="increase2">+</span></td>
-                  <td>$60 - $100</td>
-                </tr>
-                 <!-- Product 3 -->
-                <tr>
-                  <td class="product-img"><img src="/ASSETS/download (10).jpeg" alt="Rose" class="exlore-img" width="100px" height="100px">Pink Daises</td>
-                  <td>$110 - $120</td>
-                  <td class="quantity"><span class="qty decrease" id="decrease3">-</span><span class="count" id="count3"></span><span class="qty increase" id="increase3">+</span></td>
-                  <td>$110 - $120</td>
-                </tr>
-                 <!-- Product 4 -->
-                <tr>
-                 <td class="product-img"><img src="/ASSETS/images (6).jpeg" alt="Rose" class="exlore-img" width="100px"       height="100px">Gift Basket</td>
-                 <td>$300 - $500</td>
-                 <td class="quantity"><span class="qty decrease" id="decrease4">-</span><span class="count" id="count4"></span><span class="qty increase" id="increase4">+</span></td>
-                 <td>$300 - $500</td>
-                </tr>
-        </tbody>
-    </table>
-    </div>
-    <div class="checkout">
-        <button id="check">Checkout</button>
-        <script src="index.js"></script>
-    </div>
-
-    <script >
-        // Product 1
-        let decrease = document.getElementById("decrease");
-        let increase = document.getElementById("increase");
-        let count = document.getElementById("count");
-        count.style.padding = " 0px 8px"
-        // count.style.fontSize = '24px'
-        let number = 1;
-        count.innerHTML = number;
-
-        decrease.onclick = function() {
-            number--; 
-            count.innerHTML = number; 
-            if (number < 1){
-                // count.style.backgroundColor = "red"
-                count.innerHTML = "0";
-            }
-            }
-        increase.onclick = function () {
-            number++
-            count.innerHTML = number;
-        }
-        
-        // document.querySelectorAll('.decrease').forEach((btn) => {
-        //     btn.addEventListener('click', function(){
-        //         let count = document.querySelectorAll('.count');
-        //         let number =1;
-        //         count.innerHTML = number;
-        //         number--;
-        //     })
-        // })
-        // Product 3
-        let decrease2 = document.getElementById("decrease2");
-        let increase2 = document.getElementById("increase2");
-        let count2 = document.getElementById("count2");
-        let counter = 1;
-        count2.innerHTML = counter;
-        decrease2.onclick = function() {
-            counter--;
-            count2.innerHTML = counter;
-            if(counter <= 1) {
-                count2.innerHTML = 0;
-            }
-        }
-        increase2.onclick = function() {
-            counter++;
-            count2.innerHTML = counter;
-        }
-            // Product 3
-            let decrease3 = document.getElementById("decrease3");
-            let increase3 = document.getElementById("increase3");
-            let count3 = document.getElementById("count3");
-            let sub = 1;
-            count3.innerHTML = sub;
-
-            decrease3.onclick = function() {
-                sub--;
-                count3.innerHTML = sub;
-                if (sub <=1){
-                    count3.innerHTML = 0;
-                }
-            }
-            increase3.onclick = function() {
-                sub++;
-                count3.innerHTML = sub;
-            }
-
-            // Product 4
-            let decrease4 = document.getElementById("decrease4");
-            let increase4 = document.getElementById("increase4");
-            let count4 = document.getElementById("count4");
-
-            let adjust = 1;
-            count4.innerHTML = adjust;
-            decrease4.onclick = function() {
-                adjust--;
-                count4.innerHTML = adjust;
-                if (adjust <=1){
-                    count4.innerHTML = 0
-                }
-            }
-
-            increase4.onclick = function() {
-                adjust++;
-                count4.innerHTML = adjust;
-            }
-    </script>
+    <main>
+        <div class="cart-section">
+            <h1>Your Cart</h1>
+            <p>Review your selected bouquets and proceed to checkout.</p>
+            <div class="cart-items">
+                <div class="cart-item">
+                    <img src="ASSETS/download.jpeg" alt="Rose Bouquets" style="max-width:100px;">
+                    <span>Rose Bouquets</span>
+                    <span>$95.00</span>
+                    <button class="Btn">Remove</button>
+                </div>
+                <div class="cart-item">
+                    <img src="ASSETS/download (2).jpeg" alt="Sunflower Bundle" style="max-width:100px;">
+                    <span>Sunflower Bundle</span>
+                    <span>$99.00</span>
+                    <button class="Btn">Remove</button>
+                </div>
+                <!-- Add more cart items as needed -->
+            </div>
+            <div class="cart-total">
+                <h3>Total: $194.00</h3>
+                <button class="Btn">Checkout</button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footend">
+            &copy; 2025 Petal Bloom | Reach us via <a href="mailto:rosemaryoluchi309@gmail.com">Email</a>
+        </div>
+    </footer>
 </body>
 </html>
