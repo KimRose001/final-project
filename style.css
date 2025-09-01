@@ -47,7 +47,7 @@ header {
 
 /* Home Screen <Main> page styling */
 .hero {
-  background-image: url("/ASSETS/rose.webp");
+  background-image: url("./ASSETS/rose.webp");
   background-repeat: no-repeat;
   background-size: cover;
   /* height: 450px; */
@@ -326,7 +326,7 @@ button:hover {
 
 /* About Styling */
 .about-section{
-  background-image: url("/ASSETS/soft.png");
+  background-image: url("./ASSETS/soft.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
