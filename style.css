@@ -47,7 +47,7 @@ header {
 
 /* Home Screen <Main> page styling */
 .hero {
-  background-image: url("/ASSETS/pink\ rose.webp");
+  background-image: url("/ASSETS/rose.webp");
   background-repeat: no-repeat;
   background-size: cover;
   /* height: 450px; */
