@@ -25,57 +25,59 @@
         </div>
     </header>
     <main>
-        <div class="One">
+        <!-- <div class="One">
             <h2>Featured Bouquets</h2>
-        </div>
+        </div> -->
+        <h2>Featured Bouquets</h2>
         <div class="Container">
             <div class="Contain">
                 <img src="ASSETS/download.jpeg" alt="">
                 <h4>Rose Bouquets</h4>
                 <p>$95.00 - $100.00</p>
-                <button class="Btn">Add to Cart</button>
+                <button class="Btn" id="Btn" onclick="addToCart('Rose Flower',95,'ASSETS/download.jpeg')">Add to Cart</button>
             </div>
+
             <div class="Contain">
                 <img src="ASSETS/download (2).jpeg" alt="">
                 <h4>Sunflower Bundle</h4>
                 <p>$99.00 - $150.00</p>
-                <button class="Btn">Add to Cart</button>
+                <button class="Btn" onclick="addToCart('Sun Flower',99,'ASSETS/download (2).jpeg')">Add to Cart</button>
             </div>
             <div class="Contain">
                 <img src="ASSETS/download (3).jpeg" alt="">
                 <h4>Mussaenda Arrangment</h4>
                 <p>$55.00 - $98.00</p>
-                <button class="Btn">Add to Cart</button>
+                <button class="Btn" onclick="addToCart('Mussaenda Arrangement',55,'ASSETS/download (3).jpeg')">Add to Cart</button>
             </div>
             <div class="Contain">
                 <img src="ASSETS/download (10).jpeg" alt="">
                 <h4>Pink Daises</h4>
                 <p>$110.00 - $120.00</p>
-                <button class="Btn">Add to Cart</button>
+                <button class="Btn" onclick="addToCart('Pink Daises',110,'ASSETS/download (10).jpeg')">Add to Cart</button>
             </div>
             <div class="Contain">
                 <img src="ASSETS/download (17).jpeg" alt="">
                 <h4>Hibicus Bundle</h4>
                 <p>$70.00 - $90.00</p>
-                <button class="Btn">Add to Cart</button>
+                <button class="Btn"onclick="addToCart('Hibicus Bundle',70,'ASSETS/download (17).jpeg')">Add to Cart</button>
             </div>
             <div class="Contain">
                 <img src="ASSETS/download (13).jpeg" alt="">
                  <h4>Mixed Roses and Lilies Bouquets</h4>
                  <p>$130.00 - $150.00</p>
-                <button class="Btn">Add to Cart</button>
+                <button class="Btn" onclick="addToCart('Mixed Roses and Lilies Bouquets',130,'ASSETS/download (13).jpeg')">Add to Cart</button>
             </div>
             <div class="Contain">
                 <img src="ASSETS/images (2).jpeg" alt="">
                 <h4>Light Purple Lavender Daisy</h4>
                 <p>$99.00 - $110.00</p>
-                <button class="Btn">Add to Cart</button>
+                <button class="Btn" onclick="addToCart('Light Purple Lavender Daisy',99,'ASSETS/images (2).jpeg')">Add to Cart</button>
             </div>
             <div class="Contain">
                 <img src="ASSETS/download (16).jpeg" alt="">
                 <h4>Jasmine Bundle</h4>
                 <p>$110.00 - $125.00</p>
-                <button class="Btn">Add to Cart</button>
+                <button class="Btn" onclick="addToCart('Jasmine Bundle',110,'ASSETS/download (16).jpeg')">Add to Cart</button>
             </div>
         </div>
     </main>
@@ -89,5 +91,14 @@
             &copy; 2025 Petal Bloom | Reach us via  <a href="mailto: rosemaryoluchi309@gmail.com">Email</a>
         </div>
     </footer>
+
+    <script>
+function addToCart(name, price, image) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.push({ name, price, image });
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert(name + " has been added to your cart!");
+}
+    </script>
 </body>
 </html>

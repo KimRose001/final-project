@@ -29,63 +29,118 @@
         <p>Discover our exquisite selection of floral products <br> designed to brighten any occasion</p>
     </div>
 
-    <div class="box-image pro">
+    <div class="box-image ">
         <div class="flower">
             <img src="ASSETS/download (18).jpeg" alt="">
             <h4 class="context">Bouquets</h4>
             <p>Freshly arranged bouquet for every <br> occasion</p>
             <p class="context">$66 - $100</p>
-            <button class="Btn margin">Add to Cart</button>
+            <button class="Btn margin" onclick="addToCart('Bouquets', 66, 'ASSETS/download (18).jpeg')">Add to Cart</button>
         </div>
         <div class="flower">
             <img src="ASSETS/images (5).jpeg" alt="">
             <h4 class="context">Arrangements</h4>
             <p>Elegant floral arrangement for special <br> events</p>
             <p class="context">$152 - $180</p>
-            <button class="Btn margin">Add to Cart</button>
+            <button class="Btn margin" onclick="addToCart('Arrangements', 152, 'ASSETS/images (5).jpeg')">Add to Cart</button>
         </div>
         <div class="flower">
             <img src="ASSETS/images (6).jpeg" alt="">
             <h4 class="context">Gift Basket</h4>
             <p>Beautifully curated floral gift <br> baskets</p>
             <p class="context">$300 - $500</p>
-            <button class="Btn margin">Add to Cart</button>
+            <button class="Btn margin" onclick="addToCart('Gift Basket', 300, 'ASSETS/images (6).jpeg')">Add to Cart</button>
         </div>
         <div class="flower">
             <img src="ASSETS/download (19).jpeg" alt="">
             <h4 class="context">Plants</h4>
             <p>Lovely indoor plant to brighten every <br> space</p>
             <p class="context">$99 - $150</p>
-            <button class="Btn margin">Add to Cart</button>
+            <button class="Btn margin" onclick="addToCart('Plants', 99, 'ASSETS/download (19).jpeg')">Add to Cart</button>
         </div>
         <div class="flower">
             <img src="ASSETS/images (7).jpeg" alt="">
             <h4 class="context">Flower Crowns</h4>
             <p>Floral headpieces for events or <br> photoshoots</p>
             <p class="context">$40 - $60</p>
-            <button class="Btn margin">Add to Cart</button>
+            <button class="Btn margin" onclick="addToCart('Flower Crowns', 40, 'ASSETS/images (7).jpeg')">Add to Cart</button>
         </div>
         <div class="flower">
             <img src="ASSETS/images (10).jpeg" alt="">
             <h4 class="context">Single-Stem Flowers</h4>
             <p>Premium Single red rose flower for <br> household</p>
             <p class="context">$60 - $70</p>
-            <button class="Btn margin">Add to Cart</button>
+            <button class="Btn margin" onclick="addToCart('Single-Stem Flowers', 60, 'ASSETS/images (10).jpeg')">Add to Cart</button>
         </div>
         <div class="flower">
             <img src="ASSETS/images (8).jpeg" alt="">
             <h4 class="context">Flower Centerpieces</h4>
             <p>Table decoration for weddings or <br> dinners</p>
             <p class="context">$60 - $100</p>
-            <button class="Btn margin">Add to Cart</button>
+            <button class="Btn margin" onclick="addToCart('Flower Centerpieces', 60, 'ASSETS/images (8).jpeg')">Add to Cart</button>
         </div>
         <div class="flower">
             <img src="ASSETS/download (21).jpeg" alt="">
             <h4 class="context">Dried & preserved Flowers</h4>
             <p>Long lasting decorative blooms <br>decoration</p>
-            <p class="context">$300 - $500</p class="context">
-            <button class="Btn margin">Add to Cart</button>
+            <p class="context">$300 - $500</p>
+            <button class="Btn margin" onclick="addToCart('Dried & preserved Flowers', 300, 'ASSETS/download (21).jpeg')">Add to Cart</button>
         </div>
     </div>
+      
+        <script>
+      function addToCart(name, price, image) {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart.push({ name, price: Number(price), image });
+        localStorage.setItem("cart", JSON.stringify(cart));
+        renderCart();
+      }
+
+      function removeFromCart(index) {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        renderCart();
+      }
+
+      function clearCart() {
+        localStorage.removeItem("cart");
+        renderCart();
+      }
+
+      function renderCart() {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        let cartItemsDiv = document.getElementById("cart-items");
+        cartItemsDiv.innerHTML = "";
+        let total = 0;
+        if (cart.length === 0) {
+          cartItemsDiv.innerHTML = "<p>Your cart is empty.</p>";
+        } else {
+          cart.forEach((item, idx) => {
+            total += Number(item.price);
+            cartItemsDiv.innerHTML += `
+              <div class="cart-item" style="display:flex;align-items:center;margin-bottom:10px;">
+                <img src="${item.image}" alt="${item.name}" style="width:50px;height:50px;object-fit:cover;margin-right:10px;">
+                <div>
+                  <strong>${item.name}</strong><br>
+                  $${item.price}
+                </div>
+                <button style="margin-left:auto;" onclick="removeFromCart(${idx})">Remove</button>
+              </div>
+            `;
+          });
+        }
+        document.getElementById("cart-total").textContent = total.toFixed(2);
+      }
+       const buttons = document.querySelectorAll('.Btn.margin');
+    buttons.forEach(button => {
+        button.addEventListener('click', () =>{
+            alert('Item added to cart!');
+        });
+    });
+
+      window.onload = renderCart;
+    </script>
+  
 </body>
 </html>

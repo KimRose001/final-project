@@ -25,15 +25,10 @@
         </div>
     </header>
     <main>
-        <div class="contact-section">
+        <div class="contact-section" id="contactForm">
             <h1>Contact Us</h1>
-            <p>We'd love to hear from you! Reach out for orders, inquiries, or feedback.</p>
-            <div class="contact-details">
-                <img src="ASSETS/contact-flower.jpeg" alt="Contact Flower" style="max-width:200px;">
-                <p>Email: <a href="mailto:rosemaryoluchi309@gmail.com">rosemaryoluchi309@gmail.com</a></p>
-                <p>Phone: <a href="tel:+1234567890">+1 234 567 890</a></p>
-                <p>Address: 123 Flower Lane, Blossom City</p>
-            </div>
+            <p class="space">We'd love to hear from you! Reach out for orders, inquiries, or feedback.</p>
+            
             <form class="contact-form">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
@@ -41,8 +36,14 @@
                 <input type="email" id="email" name="email" required>
                 <label for="message">Message:</label>
                 <textarea id="message" name="message" rows="4" required></textarea>
-                <button type="submit" class="Btn">Send Message</button>
+                <button type="submit" class="Btn" id="button">Send Message</button>
             </form>
+        </div>
+        <div id="contact">
+                <p>Email: <a href="mailto:rosemaryoluchi309@gmail.com">rosemaryoluchi309@gmail.com</a></p>
+                <p>Phone: <a href="tel:+1234567890">+2349076225135</a></p>
+                <p>Address: 123 Flower Lane, Blossom City</p>
+            </div>
         </div>
     </main>
     <footer>
@@ -50,5 +51,7 @@
             &copy; 2025 Petal Bloom | Reach us via <a href="mailto:rosemaryoluchi309@gmail.com">Email</a>
         </div>
     </footer>
+
+    <script src="index.js"></script>
 </body>
 </html>

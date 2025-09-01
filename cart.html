@@ -1,58 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cart</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <header class="head">
-        <div class="logo">
-            <h2><span>ROSE</span> <span>PETALS</span></h2>
-        </div>
-        <div class="nav">
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="sevices.html">Services</a></li>
-                    <li><a href="products.html">Products</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="cart.html">Cart</a></li>
-                </ul>
-            </nav>
-        </div>
+      <div class="logo">
+        <h2><span>ROSE</span> <span>PETALS</span></h2>
+      </div>
+      <div class="nav">
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="sevices.html">Services</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="cart.html">Cart</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
-    <main>
-        <div class="cart-section">
-            <h1>Your Cart</h1>
-            <p>Review your selected bouquets and proceed to checkout.</p>
-            <div class="cart-items">
-                <div class="cart-item">
-                    <img src="ASSETS/download.jpeg" alt="Rose Bouquets" style="max-width:100px;">
-                    <span>Rose Bouquets</span>
-                    <span>$95.00</span>
-                    <button class="Btn">Remove</button>
+
+    <section class="cart-container">
+      <h2>Your Cart</h2>
+      <p>Review your selected bouquets and proceed to checkout.</p>
+      <div id="cart-items" class="cart-items">
+      </div>
+      <div class="cart-summary">
+        <h3>Total: $<span id="cart-total">0</span></h3>
+        <button onclick="clearCart()" class="clear-btn">Clear cart</button>
+      </div>
+    </section>
+    
+    <script>
+      function addToCart(name, price, image) {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart.push({ name, price: Number(price), image });
+        localStorage.setItem("cart", JSON.stringify(cart));
+        renderCart();
+      }
+
+      function removeFromCart(index) {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        renderCart();
+      }
+
+      function clearCart() {
+        localStorage.removeItem("cart");
+        renderCart();
+      }
+
+      function renderCart() {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        let cartItemsDiv = document.getElementById("cart-items");
+        cartItemsDiv.innerHTML = "";
+        let total = 0;
+        if (cart.length === 0) {
+          cartItemsDiv.innerHTML = "<p>Your cart is empty.</p>";
+        } else {
+          cart.forEach((item, idx) => {
+            total += Number(item.price);
+            cartItemsDiv.innerHTML += `
+              <div class="cart-item" style="display:flex;align-items:center;margin-bottom:10px;">
+                <img src="${item.image}" alt="${item.name}" style="width:50px;height:50px;object-fit:cover;margin-right:10px;">
+                <div>
+                  <strong>${item.name}</strong><br>
+                  $${item.price}
                 </div>
-                <div class="cart-item">
-                    <img src="ASSETS/download (2).jpeg" alt="Sunflower Bundle" style="max-width:100px;">
-                    <span>Sunflower Bundle</span>
-                    <span>$99.00</span>
-                    <button class="Btn">Remove</button>
-                </div>
-                <!-- Add more cart items as needed -->
-            </div>
-            <div class="cart-total">
-                <h3>Total: $194.00</h3>
-                <button class="Btn">Checkout</button>
-            </div>
-        </div>
-    </main>
-    <footer>
-        <div class="footend">
-            &copy; 2025 Petal Bloom | Reach us via <a href="mailto:rosemaryoluchi309@gmail.com">Email</a>
-        </div>
-    </footer>
-</body>
+                <button style="margin-left:auto;" onclick="removeFromCart(${idx})">Remove</button>
+              </div>
+            `;
+          });
+        }
+        document.getElementById("cart-total").textContent = total.toFixed(2);
+      }
+
+      window.onload = renderCart;
+    </script>
+  
+    
+  </body>
 </html>
